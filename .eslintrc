@@ -1,0 +1,56 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/recommended",
+    "airbnb",
+    "airbnb/base",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "prettier",
+    "plugin:react-hooks/recommended"
+  ],
+
+  "rules": {
+    "linebreak-style": "off",
+    "max-depth": "warn",
+    "function-paren-newline": "off",
+    "comma-dangle": "off",
+    "implicit-arrow-linebreak": "off",
+    "semi": "off",
+    "quotes": [2, "single", {"avoidEscape": true}],
+    "no-plusplus": "off",
+    "eol-last": "off",
+    "no-alert": "error",
+    "prefer-const": "off",
+    "no-shadow": "off",
+    "no-unused-vars": "off",
+    "class-methods-use-this": "off",
+    "no-var": "error",
+    "arrow-body-style": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
+    "react/destructuring-assignment": [0],
+    "react/prop-types": [0],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+
+  "plugins": ["import", "prettier", "react", "react-hooks"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "requireConfigFile": false,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

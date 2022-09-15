@@ -18,7 +18,7 @@ const ToDoItem = () => {
     e.preventDefault()
 
     if (value !== '') {
-      listTodos.push({ todo: value, id: listTodos.length })
+      listTodos.push({ todo: value, id: new Date().getMilliseconds() })
       setList(listTodos)
       setValue('')
       setLocaleStorage('Oleg', listTodos)
@@ -32,11 +32,29 @@ const ToDoItem = () => {
     }
   }, [])
 
+  const deleteTodos = (e) => {
+    let newListTodos = []
+
+    for (let i = 0; i < listTodos.length; i++) {
+      if (+e.target.closest('.todo').id !== listTodos[i].id) {
+        newListTodos.push(listTodos[i])
+      }
+    }
+    setLocaleStorage('Oleg', newListTodos)
+    listTodos = JSON.parse(localStorage.getItem('Oleg'))
+    setList(listTodos)
+  }
+
+  const doneTodos = (e) => {
+    console.log(e.target.closest('.todo'))
+    e.target.closest('.todo').style.backgroundColor = 'green'
+  }
+
   return (
     <>
       <InputField value={value} onChange={(e) => setValue(e.target.value)} onClick={handlerAddToDos} />
       <ul className="list__todos">
-        <ToDoList todos={list} />
+        <ToDoList todos={list} onClickDelete={deleteTodos} onClickDone={doneTodos} />
       </ul>
     </>
   )

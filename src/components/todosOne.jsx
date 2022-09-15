@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 
-const ToDoList = ({ todos, onClick, id }) =>
-  todos.map((todo) => (
+const ToDoList = (props) =>
+  props.todos.map((todo) => (
     <li className="todo" key={todo.id} id={todo.id}>
       {todo.todo}
       <div>
-        <button type="button">done</button>
-        <button type="button" onClick={onClick}>
+        <button type="button" onClick={props.onClickDone}>
+          done
+        </button>
+        <button type="button" onClick={props.onClickDelete}>
           delete
         </button>
       </div>

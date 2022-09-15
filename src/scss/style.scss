@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 10px;
+
+    .todos {
+        display: flex;
+        gap: 10px;
+    }
+
+    .list__todos {
+        width: 100%;
+    }
+
+    .todo {
+        display: flex;
+        justify-content: space-between;
+        border-top: solid 1px black;
+        border-right: solid 1px black;
+        border-left: solid 1px black;
+        padding: 5px;
+        list-style-type: none
+    }
+
+    .todo:last-child {
+        border-bottom: solid 1px black;
+    }
+
+}

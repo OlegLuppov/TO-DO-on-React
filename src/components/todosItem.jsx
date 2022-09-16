@@ -9,6 +9,7 @@ const setLocaleStorage = (key, value) => {
 }
 
 let listTodos = []
+let a = document.querySelectorAll('.todo')
 
 const ToDoItem = () => {
   const [list, setList] = useState(listTodos)
@@ -18,7 +19,7 @@ const ToDoItem = () => {
     e.preventDefault()
 
     if (value !== '') {
-      listTodos.push({ todo: value, id: new Date().getMilliseconds() })
+      listTodos.push({ todo: value, id: new Date().getMilliseconds(), background: '' })
       setList(listTodos)
       setValue('')
       setLocaleStorage('Oleg', listTodos)
@@ -30,6 +31,17 @@ const ToDoItem = () => {
       listTodos = [...listTodos, ...JSON.parse(localStorage.getItem('Oleg'))]
       setList(listTodos)
     }
+    window.addEventListener('load', () => {
+      let list = document.querySelectorAll('.todo')
+      const arr = JSON.parse(localStorage.getItem('Oleg'))
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < list.length; j++) {
+          if (+arr[i].id === +list[j].id) {
+            list[j].style.backgroundColor = arr[i].background
+          }
+        }
+      }
+    })
   }, [])
 
   const deleteTodos = (e) => {
@@ -45,16 +57,22 @@ const ToDoItem = () => {
     setList(listTodos)
   }
 
-  const doneTodos = (e) => {
-    console.log(e.target.closest('.todo'))
+  const handleDoneTodos = (e) => {
+    for (let i = 0; i < listTodos.length; i++) {
+      if (listTodos[i].id === +e.target.closest('.todo').id) {
+        listTodos[i].background = 'green'
+        setLocaleStorage('Oleg', listTodos)
+      }
+    }
     e.target.closest('.todo').style.backgroundColor = 'green'
+    setList(listTodos)
   }
 
   return (
     <>
       <InputField value={value} onChange={(e) => setValue(e.target.value)} onClick={handlerAddToDos} />
       <ul className="list__todos">
-        <ToDoList todos={list} onClickDelete={deleteTodos} onClickDone={doneTodos} />
+        <ToDoList todos={list} onClickDelete={deleteTodos} onClickDone={handleDoneTodos} />
       </ul>
     </>
   )

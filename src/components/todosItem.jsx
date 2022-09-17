@@ -6,6 +6,7 @@ import InputField from './inputField.jsx'
 import useSetLocalStorage from './localStorageHooks/costomSetLocaleStorage.jsx'
 import useGetLocaleStorage from './localStorageHooks/costomGetLocalStorage.jsx'
 
+const Kate = []
 const ToDoItem = () => {
   const [list, setList] = useState([])
   const { changeSetLocal } = useSetLocalStorage()

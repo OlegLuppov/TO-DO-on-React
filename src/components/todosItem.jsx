@@ -9,7 +9,6 @@ const setLocaleStorage = (key, value) => {
 }
 
 let listTodos = []
-let a = document.querySelectorAll('.todo')
 
 const ToDoItem = () => {
   const [list, setList] = useState(listTodos)
@@ -19,7 +18,7 @@ const ToDoItem = () => {
     e.preventDefault()
 
     if (value !== '') {
-      listTodos.push({ todo: value, id: new Date().getMilliseconds(), background: '' })
+      listTodos.push({ todo: value, id: new Date().getMilliseconds(), background: { backgroundColor: '' } })
       setList(listTodos)
       setValue('')
       setLocaleStorage('Oleg', listTodos)
@@ -31,40 +30,30 @@ const ToDoItem = () => {
       listTodos = [...listTodos, ...JSON.parse(localStorage.getItem('Oleg'))]
       setList(listTodos)
     }
-    window.addEventListener('load', () => {
-      let list = document.querySelectorAll('.todo')
-      const arr = JSON.parse(localStorage.getItem('Oleg'))
-      for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < list.length; j++) {
-          if (+arr[i].id === +list[j].id) {
-            list[j].style.backgroundColor = arr[i].background
-          }
-        }
-      }
-    })
   }, [])
 
   const deleteTodos = (e) => {
     let newListTodos = []
-
-    for (let i = 0; i < listTodos.length; i++) {
-      if (+e.target.closest('.todo').id !== listTodos[i].id) {
-        newListTodos.push(listTodos[i])
+    listTodos.forEach((elem) => {
+      if (+e.target.closest('.todo').id !== elem.id) {
+        newListTodos.push(elem)
       }
-    }
+    })
     setLocaleStorage('Oleg', newListTodos)
     listTodos = JSON.parse(localStorage.getItem('Oleg'))
     setList(listTodos)
   }
 
   const handleDoneTodos = (e) => {
-    for (let i = 0; i < listTodos.length; i++) {
-      if (listTodos[i].id === +e.target.closest('.todo').id) {
-        listTodos[i].background = 'green'
-        setLocaleStorage('Oleg', listTodos)
+    let newListTodos = []
+    listTodos.forEach((elem) => {
+      if (elem.id === +e.target.closest('.todo').id) {
+        elem.background = { backgroundColor: 'green' }
+        newListTodos = [...newListTodos, ...listTodos]
       }
-    }
-    e.target.closest('.todo').style.backgroundColor = 'green'
+    })
+    setLocaleStorage('Oleg', newListTodos)
+    listTodos = JSON.parse(localStorage.getItem('Oleg'))
     setList(listTodos)
   }
 

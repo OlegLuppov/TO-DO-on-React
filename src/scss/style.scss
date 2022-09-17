@@ -30,4 +30,15 @@
         border-bottom: solid 1px black;
     }
 
+    .good {
+        display: flex;
+        justify-content: space-between;
+        border-top: solid 1px black;
+        border-right: solid 1px black;
+        border-left: solid 1px black;
+        padding: 5px;
+        list-style-type: none;
+        background-color: green;
+    }
+
 }

@@ -23,7 +23,7 @@
     "comma-dangle": "off",
     "implicit-arrow-linebreak": "off",
     "semi": "off",
-    "quotes": [2, "single", {"avoidEscape": true}],
+    "quotes": [2, "single", { "avoidEscape": true }],
     "no-plusplus": "off",
     "eol-last": "off",
     "no-alert": "error",
@@ -33,6 +33,7 @@
     "class-methods-use-this": "off",
     "no-var": "error",
     "arrow-body-style": "off",
+    "no-param-reassign": "off",
     "react/function-component-definition": [
       2,
       {

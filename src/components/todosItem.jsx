@@ -3,58 +3,56 @@ import { createRoot } from 'react-dom/client'
 
 import ToDoList from './todosOne.jsx'
 import InputField from './inputField.jsx'
-
-const setLocaleStorage = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value))
-}
-
-let listTodos = []
+import useSetLocalStorage from './localStorageHooks/costomSetLocaleStorage.jsx'
+import useGetLocaleStorage from './localStorageHooks/costomGetLocalStorage.jsx'
 
 const ToDoItem = () => {
-  const [list, setList] = useState(listTodos)
+  const [list, setList] = useState([])
+  const { changeSetLocal } = useSetLocalStorage()
+  const { data, changeGetLocal } = useGetLocaleStorage('Oleg')
   const [value, setValue] = useState('')
 
   const handlerAddToDos = (e) => {
     e.preventDefault()
 
     if (value !== '') {
-      listTodos.push({ todo: value, id: new Date().getMilliseconds(), background: { backgroundColor: '' } })
-      setList(listTodos)
+      list.push({ todo: value, id: new Date().getMilliseconds(), background: { backgroundColor: '' } })
+      changeSetLocal('Oleg', list)
+      setList(list)
       setValue('')
-      setLocaleStorage('Oleg', listTodos)
+      changeGetLocal('Oleg')
     }
   }
 
   useEffect(() => {
     if (localStorage.getItem('Oleg')) {
-      listTodos = [...listTodos, ...JSON.parse(localStorage.getItem('Oleg'))]
-      setList(listTodos)
+      setList([...data])
     }
-  }, [])
+  }, [data])
 
   const deleteTodos = (e) => {
     let newListTodos = []
-    listTodos.forEach((elem) => {
+    list.forEach((elem) => {
       if (+e.target.closest('.todo').id !== elem.id) {
         newListTodos.push(elem)
       }
     })
-    setLocaleStorage('Oleg', newListTodos)
-    listTodos = JSON.parse(localStorage.getItem('Oleg'))
-    setList(listTodos)
+    changeSetLocal('Oleg', newListTodos)
+    changeGetLocal('Oleg')
+    setList(data)
   }
 
   const handleDoneTodos = (e) => {
     let newListTodos = []
-    listTodos.forEach((elem) => {
+    list.forEach((elem) => {
       if (elem.id === +e.target.closest('.todo').id) {
         elem.background = { backgroundColor: 'green' }
-        newListTodos = [...newListTodos, ...listTodos]
+        newListTodos = [...newListTodos, ...list]
       }
     })
-    setLocaleStorage('Oleg', newListTodos)
-    listTodos = JSON.parse(localStorage.getItem('Oleg'))
-    setList(listTodos)
+    changeSetLocal('Oleg', newListTodos)
+    changeGetLocal('Oleg')
+    setList(data)
   }
 
   return (

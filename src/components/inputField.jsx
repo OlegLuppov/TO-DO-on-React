@@ -5,7 +5,7 @@ const InputField = ({ onClick, value, onChange }) => {
     <form className="todos">
       <input type="text" placeholder="write down your todos" value={value} onChange={onChange} />
       <button type="button" onClick={onClick}>
-        Add to-do
+        Add todo
       </button>
     </form>
   )

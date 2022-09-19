@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 const useGetLocaleStorage = (key) => {
-  const [data, setData] = useState(JSON.parse(localStorage.getItem(key)))
+  const [getData, setData] = useState(JSON.parse(localStorage.getItem(key)))
 
   return {
-    data,
+    getData,
     changeGetLocal: (key) => setData(JSON.parse(localStorage.getItem(key))),
   }
 }

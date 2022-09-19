@@ -1,10 +1,10 @@
 import React from 'react'
 
-const InputField = ({ onClick, value, onChange }) => {
+const InputField = (props) => {
   return (
-    <form className="todos">
-      <input type="text" placeholder="[Write down your todos]" value={value} onChange={onChange} />
-      <button className="todos__button" type="button" onClick={onClick}>
+    <form className="todos" role="presentation" onKeyDown={props.onKeyDown}>
+      <input type="text" placeholder="[Write down your todos]" value={props.value} onChange={props.onChange} />
+      <button className="todos__button" type="button" onClick={props.onClick}>
         Add todo
       </button>
     </form>

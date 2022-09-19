@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const ToDoList = (props) =>
-  props.todos.map((todo) => (
+const TodoList = (props) => {
+  return props.list.map((todo) => (
     <li className="todo" key={todo.id} id={todo.id} style={todo.background}>
       {todo.todo}
       <div className="button__wrapper">
@@ -14,5 +14,6 @@ const ToDoList = (props) =>
       </div>
     </li>
   ))
+}
 
-export default ToDoList
+export default TodoList

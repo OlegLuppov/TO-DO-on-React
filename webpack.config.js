@@ -6,7 +6,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: './src/App.tsx',
+  entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bandle.js',

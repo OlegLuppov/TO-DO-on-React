@@ -1,27 +1,22 @@
 import { createSlice,PayloadAction } from '@reduxjs/toolkit'
 
-type Todo = {
+export type Todo = {
   value: string
+  list?:Todo[]
   id:string,
-  background:string
-}
-
-type TodosState = {
-  value:string
-  list:Todo[]
-  background:string
-
-}
-
-const initialState:TodosState = {
-  value:'',
-  list:[],
-  background:''
+  completed:boolean
+  decoration:string 
 }
 
 const mySlices = createSlice({
   name: 'todos',
-  initialState,
+  initialState:<Todo> {
+    value:'',
+    list:[],
+    id: new Date().getUTCMilliseconds().toString(),
+    completed:false,
+    decoration:'none'
+  },
   reducers: {
     AddTodo:(state, action:PayloadAction<Todo[]>) => {
       state.list = action.payload
@@ -29,12 +24,11 @@ const mySlices = createSlice({
     ChangeValue: (state, action:PayloadAction<string>) => {
       state.value = action.payload
     },
-    ChangeBackground:(state, action:PayloadAction<string>) =>  {
-       
-     state.background = action.payload
-    },
+    changeTextDecoration:(state,action:PayloadAction<string>) => {
+    state.decoration = action.payload
+    }
   },
 })
 
-export const { AddTodo, ChangeValue, ChangeBackground } = mySlices.actions
+export const {AddTodo, ChangeValue, changeTextDecoration} = mySlices.actions
 export default mySlices.reducer

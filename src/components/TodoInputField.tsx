@@ -1,9 +1,16 @@
 import React from 'react'
 import { TextField } from '@mui/material'
 
-export const InputField: React.FC = () => {
+interface InputFieldProps {
+  value: string
+  onChange(e: React.ChangeEvent<HTMLInputElement>): void
+}
+
+export const InputField: React.FC<InputFieldProps> = ({ value, onChange }) => {
   return (
     <TextField
+      value={value}
+      onChange={onChange}
       sx={{
         width: '80%',
         height: '1.5em',
@@ -27,7 +34,6 @@ export const InputField: React.FC = () => {
           color: '#1976d2',
         },
       }}
-      //   fullWidth
       id="standard-basic"
       label="Введите дело"
       variant="standard"

@@ -4,13 +4,15 @@ import { TextField } from '@mui/material'
 interface InputFieldProps {
   value: string
   onChange(e: React.ChangeEvent<HTMLInputElement>): void
+  onKeyPress(e: React.KeyboardEvent): void
 }
 
-export const InputField: React.FC<InputFieldProps> = ({ value, onChange }) => {
+export const InputField: React.FC<InputFieldProps> = ({ value, onChange, onKeyPress }) => {
   return (
     <TextField
       value={value}
       onChange={onChange}
+      onKeyPress={onKeyPress}
       sx={{
         width: '80%',
         height: '1.5em',

@@ -17,4 +17,15 @@ $backgroundButtoneDelete: red;
     font-family: $font;
     font-size: $fontSize;
 
+    a {
+        text-decoration: none;
+        color: #1976d2;
+        font-size: calc(18px + (20 - 18) * (100vw - 400px) / (1920 - 400));
+
+
+    }
+
+    a:active {
+        color: #1976d2;
+    }
 }

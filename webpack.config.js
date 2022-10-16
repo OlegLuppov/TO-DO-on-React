@@ -13,6 +13,7 @@ module.exports = {
   },
   devServer: {
     port: 3000,
+    historyApiFallback: true,
   },
   plugins: [
     new HTMLWebpackPlugin({ template: './public/index.html' }),

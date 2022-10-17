@@ -1,5 +1,6 @@
 # TO-DO-on-React
 > Это приложение для управления списком дел
+![screenshot](https://github.com/OlegLuppov/TO-DO-on-React/blob/master/public/img/screenshot.png)
 
 ## Используемые технологии:
 
@@ -18,4 +19,4 @@
 - npm run build
 - npm start
 
-![screenshot](https://github.com/OlegLuppov/TO-DO-on-React/blob/master/public/img/screenshot.png)
+

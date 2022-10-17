@@ -18,4 +18,4 @@
 - npm run build
 - npm start
 
-![screenshot]()
+![screenshot](https://github.com/OlegLuppov/TO-DO-on-React/blob/master/public/img/screenshot.png)

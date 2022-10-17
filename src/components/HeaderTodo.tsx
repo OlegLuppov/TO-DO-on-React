@@ -5,8 +5,8 @@ import { AppBar, Typography, List, ListItem } from '@mui/material'
 export const HeaderTodo: React.FC = () => {
   return (
     <AppBar
-      position="static"
       sx={{
+        position: 'fixed',
         background: '#e57373',
         p: '1rem',
         flexDirection: 'row',

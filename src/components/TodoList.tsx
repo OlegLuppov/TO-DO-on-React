@@ -1,15 +1,11 @@
 import React from 'react'
 import { Checkbox, List, ListItem, ListItemText, IconButton } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { Todo } from '../store/slice'
+import { ITodoList } from '../interfaces/interfaces'
 import { useAppDispatch } from '../store/hooks'
 import { changeChecked, removeTodo } from '../store/slice'
 
-interface TodoList {
-  todos: Todo[]
-}
-
-export const TodoList: React.FC<TodoList> = ({ todos }) => {
+export const TodoList: React.FC<ITodoList> = ({ todos }) => {
   const dispatch = useAppDispatch()
 
   return (

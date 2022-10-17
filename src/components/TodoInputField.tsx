@@ -1,13 +1,8 @@
 import React from 'react'
 import { TextField } from '@mui/material'
+import { IInputFieldProps } from '../interfaces/interfaces'
 
-interface InputFieldProps {
-  value: string
-  onChange(e: React.ChangeEvent<HTMLInputElement>): void
-  onKeyPress(e: React.KeyboardEvent): void
-}
-
-export const InputField: React.FC<InputFieldProps> = ({ value, onChange, onKeyPress }) => {
+export const InputField: React.FC<IInputFieldProps> = ({ value, onChange, onKeyPress }) => {
   return (
     <TextField
       value={value}

@@ -13,6 +13,7 @@ $backgroundButtoneDelete: red;
     align-items: center;
     gap: 0.5rem;
     margin: 0 auto;
+    padding-top: 3rem;
     width: 100%;
     font-family: $font;
     font-size: $fontSize;
@@ -27,5 +28,11 @@ $backgroundButtoneDelete: red;
 
     a:active {
         color: #1976d2;
+    }
+}
+
+@media (max-width:600px) {
+    #root {
+        padding-top: 9rem;
     }
 }

@@ -5,7 +5,7 @@ import { InputField } from '../components/TodoInputField'
 import { TodoList } from '../components/TodoList'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { addTodo, changeValue } from '../store/slice'
-import { Todo } from '../store/slice'
+import { ITodo } from '../interfaces/interfaces'
 import { saveToLocalStorage, getLocalStorage } from '../TodolocalStorage/localeStorage'
 
 export const TodosPage: React.FC = () => {
@@ -15,7 +15,7 @@ export const TodosPage: React.FC = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    const saved = getLocalStorage('My todos') as Todo[]
+    const saved = getLocalStorage('My todos') as ITodo[]
     dispatch(addTodo(saved))
   }, [])
 

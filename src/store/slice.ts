@@ -1,20 +1,16 @@
 import { createSlice,PayloadAction } from '@reduxjs/toolkit'
+import { ITodo } from '../interfaces/interfaces'
 
-export interface Todo  {
-  value: string
-  id:number,
-  completed:boolean
-  decoration:string 
-}
+
 
 const mySlices = createSlice({
   name: 'todos',
   initialState: {
- list:<Todo[]>[],
+ list:<ITodo[]>[],
  value:<string>''   
   },
   reducers: {
-    addTodo:(state, action:PayloadAction<Todo[]>) => {
+    addTodo:(state, action:PayloadAction<ITodo[]>) => {
     state.list = action.payload
     },
     changeValue: (state, action:PayloadAction<string>) => {
